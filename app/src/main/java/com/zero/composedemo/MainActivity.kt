@@ -6,8 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -22,9 +21,10 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             LazyColumn() {
-                items(50) {
+                val list = listOf("this", "is", "jetpack", "compose")
+                itemsIndexed(list) { index, item ->
                     Text(
-                        text = "Text $it",
+                        text = "$index - $item",
                         fontFamily = fontFamily,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
